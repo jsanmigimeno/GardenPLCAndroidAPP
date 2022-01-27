@@ -16,21 +16,19 @@ export class AlertService {
       message,
       buttons : [
         {
-          text    : 'No',
-          role    : 'cancel',
-          cssClass: 'secondary',
-          id      : 'cancel-button',
-          handler : () => alert.dismiss(false)
+          text: 'No',
+          role: 'cancel',
+          id  : 'cancel-button'
         }, {
-          text   : 'Si',
-          id     : 'confirm-button',
-          handler: () => alert.dismiss(true)
+          text: 'Si',
+          role: 'done',
+          id  : 'confirm-button'
         }
       ]
     });
 
     await alert.present();
 
-    return (await alert.onDidDismiss()).data;
+    return (await alert.onDidDismiss()).role === 'done';
   }
 }
