@@ -1,0 +1,7 @@
+{
+  "name": "GardenPLC",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

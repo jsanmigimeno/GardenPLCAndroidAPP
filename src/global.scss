@@ -1,0 +1,187 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+// Import Montserrat font
+/* montserrat-regular - latin-ext_latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('assets/fonts/montserrat-v15-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('assets/fonts/montserrat-v15-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* montserrat-500 - latin-ext_latin */
+@font-face {
+    font-family: 'Montserrat Medium';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''),
+        url('assets/fonts/montserrat-v15-latin-ext_latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('assets/fonts/montserrat-v15-latin-ext_latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* montserrat-600 - latin-ext_latin */
+@font-face {
+    font-family: 'Montserrat SemiBold';
+    font-style: normal;
+    font-weight: 600;
+    src: local(''),
+        url('assets/fonts/montserrat-v15-latin-ext_latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('assets/fonts/montserrat-v15-latin-ext_latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* montserrat-700 - latin-ext_latin */
+@font-face {
+    font-family: 'Montserrat Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+        url('assets/fonts/montserrat-v15-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('assets/fonts/montserrat-v15-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+* {
+    font-family: "Montserrat";
+}
+
+ion-content {
+    // --background-color: #e9e9e9;
+    // background-image: url("https://www.transparenttextures.com/patterns/grilled-noise.png");
+    --background: #e9e9e9 url("assets/images/bg-texture.png");
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat SemiBold";
+    line-height: 1.4em;
+}
+
+p {
+    font-family: "Montserrat Medium";
+}
+
+.section-title {
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.section-title.state {
+    font-family: "Montserrat Medium";
+    font-size: 18px;
+}
+
+.on {
+    color: var(--ion-color-success);
+    border-color: var(--ion-color-success);
+}
+
+.on-full {
+  background: var(--ion-color-success);
+  color: var(--ion-color-success-constrast);
+}
+
+.off {
+    color: var(--ion-color-dark);
+    border-color: var(--ion-color-dark);
+}
+
+ion-toggle {
+    pointer-events: none;
+}
+
+ion-button {
+    letter-spacing: normal;
+    --border-width: 1.5px;
+    text-transform: none;
+    font-family: 'Montserrat Medium';
+}
+
+ion-modal.large-centered-modal {
+    align-items: flex-start;
+    padding-top: 10%;
+    --height: auto;
+    --width: 85vw;
+    --backdrop-opacity: var(--ion-backdrop-opacity, 0.4);
+    --background: none;
+
+    .modal-wrapper {
+        border-radius: 5px;
+    }
+
+    .ion-page {
+        position: relative;
+        display: block;
+        contain: content;
+
+        .inner-content {
+            // height: 75vh;
+            // max-height: 75vh;
+            // min-height: 50vh;
+            overflow: hidden;
+        }
+    }
+}
+
+.card-container {
+  margin: 5%;
+  padding: 5%;
+  /* border: solid 1.5px; */
+  border-radius: 5px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+app-list-item {
+    font-size: 15px;
+    font-weight: bold;
+    --padding: 0 5%;
+
+    span {
+        font-weight: normal;
+    }
+
+    ion-toggle {
+        padding-right: 0;
+    }
+}
+
+.alert-style {
+    text-align: center;
+
+    .alert-head {
+        text-align: center;
+    }
+
+    .alert-message {
+        line-height: 1.4em;
+        padding: 3% 5%;
+    }
+
+    .alert-button {
+        text-transform: none;
+        font-size: 16px;
+    }
+}
