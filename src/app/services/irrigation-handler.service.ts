@@ -75,8 +75,8 @@ export class IrrigationHandlerService {
     const confirmation = await this.alertService.confirmationAlert(
       state.scheduleEnable ? 'Desctivar Riego Automático' : 'Activar Riego Automático',
       state.scheduleEnable
-        ? 'Estas seguro de que deseas desactivar el riego automatico?'
-        : 'Estas seguro de que deseas activar el riego automatico?'
+        ? '¿Estás seguro de que deseas desactivar el riego automatico?'
+        : '¿Estás seguro de que deseas activar el riego automatico?'
     );
 
     if (confirmation) await this.updateField('scheduleEnable', !state.scheduleEnable, 'irr-schedule-enable');
@@ -98,7 +98,7 @@ export class IrrigationHandlerService {
   async resumeIrrigation(): Promise<void> {
     const confirmation = await this.alertService.confirmationAlert(
       'Reanudar Riego',
-      `Estas seguro de que deseas reanudar el riego?`
+      `¿Estás seguro de que deseas reanudar el riego?`
     );
 
     if (confirmation) await this.commService.sendPostRequest('irr-schedule-resume', {value: 1});
@@ -107,7 +107,7 @@ export class IrrigationHandlerService {
   async cancelIrrigation(): Promise<void> {
     const confirmation = await this.alertService.confirmationAlert(
       'Cancelar Riego',
-      `Estas seguro de que deseas cancelar todos los riegos pendientes?`
+      `¿Estás seguro de que deseas cancelar todos los riegos pendientes?`
     );
 
     if (confirmation) await this.commService.sendPostRequest('irr-cancel-all', {value: 1});
@@ -116,7 +116,7 @@ export class IrrigationHandlerService {
   async reset(): Promise<void> {
     const confirmation = await this.alertService.confirmationAlert(
       'Borrar Configuración',
-      `Estas seguro de que deseas borrar la configuración de TODOS los grupos?`
+      `¿Estás seguro de que deseas borrar la configuración de TODOS los grupos?`
     );
 
     if (!confirmation) return;
@@ -136,8 +136,8 @@ export class IrrigationHandlerService {
     const confirmation = await this.alertService.confirmationAlert(
       groupData.enabled ? 'Desctivar Grupo' : 'Activar Grupo',
       groupData.enabled
-        ? `Estas seguro de que deseas desactivar el grupo ${groupIdx+1}. ${groupData.name}?`
-        : `Estas seguro de que deseas activar el grupo ${groupIdx+1}. ${groupData.name}?`
+        ? `¿Estás seguro de que deseas desactivar el grupo ${groupIdx+1}. ${groupData.name}?`
+        : `¿Estás seguro de que deseas activar el grupo ${groupIdx+1}. ${groupData.name}?`
     );
 
     if (confirmation) {
@@ -183,7 +183,7 @@ export class IrrigationHandlerService {
   async startGroupNow(groupIdx: number): Promise<void> {
     const confirmation = await this.alertService.confirmationAlert(
       'Iniciar Ahora',
-      `Estas seguro de que deseas iniciar el grupo ${groupIdx+1} ahora?`
+      `¿Estás seguro de que deseas iniciar el grupo ${groupIdx+1} ahora?`
     );
 
     if (!confirmation) return;
@@ -193,7 +193,7 @@ export class IrrigationHandlerService {
   async resetGroup(groupIdx: number): Promise<void> {
     const confirmation = await this.alertService.confirmationAlert(
       'Borrar Configuración',
-      `Estas seguro de que deseas borrar la configuracion del grupo ${groupIdx+1}?`
+      `¿Estás seguro de que deseas borrar la configuracion del grupo ${groupIdx+1}?`
     );
 
     if (!confirmation) return;

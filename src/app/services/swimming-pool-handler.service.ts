@@ -50,8 +50,8 @@ export class SwimmingPoolHandlerService {
     const confirmation = await this.alertService.confirmationAlert(
       state.scheduleEnable ? 'Desctivar Filtrado Automático' : 'Activar Filtrado Automático',
       state.scheduleEnable
-        ? 'Estas seguro de que deseas desactivar el filtrado automatico?'
-        : 'Estas seguro de que deseas activar el filtrado automatico?'
+        ? '¿Estás seguro de que deseas desactivar el filtrado automatico?'
+        : '¿Estás seguro de que deseas activar el filtrado automatico?'
     );
     if (confirmation) await this.updateField('scheduleEnable', !state.scheduleEnable, 'sp-schedule-enable');
   }
