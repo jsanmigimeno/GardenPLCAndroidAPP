@@ -7,6 +7,7 @@ import { App } from '@capacitor/app';
 import { Storage } from '@capacitor/storage';
 
 import { TextInputAlertModalComponent } from '../shared/text-input-alert/text-input-alert.component';
+import { retry } from 'rxjs/operators';
 
 const HOST_IP_KEY_NAME       = 'hostIP';
 const MAX_CONNECTING_TIMEOUT = 1000;
@@ -151,17 +152,17 @@ export class CommunicatorService {
 
 
   // API communication helper functions
-  async sendGetRequest(instruction: string, isJson?: boolean, payload?: {[key: string]: any}): Promise<any> {
+  async sendGetRequest(instruction: string, isJson?: boolean, payload?: {[key: string]: any}, maxRetries: number = 5): Promise<any | undefined> {
     while (this.requestActive) await new Promise(r => setTimeout(r, 20)); // Wait for communication channel to be free
 
-    let response: any;
+    let response: any | undefined;
 
     this.requestActive = true;
-      const requestURI = this.getURI(instruction, payload);
+    const requestURI = this.getURI(instruction, payload);
 
     if (isJson) {
       try {
-        response = this.http.get(requestURI).toPromise();
+        response = this.http.get(requestURI).pipe(retry(maxRetries)).toPromise();
       }
       catch (e) {
         console.error(e);
@@ -169,7 +170,7 @@ export class CommunicatorService {
     }
     else {
       try {
-        const httpResponse = await this.http.get(requestURI, {observe: 'response', responseType: 'text'}).toPromise();
+        const httpResponse = await this.http.get(requestURI, {observe: 'response', responseType: 'text'}).pipe(retry(maxRetries)).toPromise();
         if (httpResponse.status === 200) response = httpResponse.body;
       }
       catch (e) {
