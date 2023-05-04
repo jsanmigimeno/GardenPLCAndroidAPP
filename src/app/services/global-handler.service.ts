@@ -18,7 +18,7 @@ export class GlobalHandlerService {
     this.commService.connectionState$.subscribe(connectionState => {
       if (connectionState === ConnectionState.connected) this.checkChanges();
     });
-    this.globalLastChangeTimestamp$.subscribe(() => this.updateState());
+    this.globalLastChangeTimestamp$.subscribe(val => val !== -1 ? this.updateState() : {});
   }
 
   async updateClock(): Promise<void> {
@@ -39,6 +39,10 @@ export class GlobalHandlerService {
 
   private async checkChanges(): Promise<void> {
     const changes = await this.commService.sendGetRequest('changes', true);
+
+    if (changes == null) {
+      return;
+    }
 
     this.clock$.next(changes.clock);
     if (changes.global && changes.global !== this.globalLastChangeTimestamp$.getValue()) {

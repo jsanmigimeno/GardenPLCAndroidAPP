@@ -40,7 +40,7 @@ export class SwimmingPoolHandlerService {
     private commService   : CommunicatorService,
     private alertService  : AlertService
   ) {
-    this.globalHandler.swimmingPoolLastChangeTimestamp$.subscribe(() => this.updateState());
+    this.globalHandler.swimmingPoolLastChangeTimestamp$.asObservable().subscribe(val => val !== -1 ? this.updateState() : {});
   }
 
   async toggleScheduleEnable(): Promise<void> {

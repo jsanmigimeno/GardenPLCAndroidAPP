@@ -61,7 +61,7 @@ export class IrrigationHandlerService {
     private globalHandler : GlobalHandlerService,
     private alertService  : AlertService
   ) {
-    this.globalHandler.irrigationLastChangeTimestamp$.subscribe(() => this.updateState());
+    this.globalHandler.irrigationLastChangeTimestamp$.subscribe(val => val !== -1 ? this.updateState() : {});
   }
 
 
