@@ -27,9 +27,10 @@ export const zonesIntToArray = (zonesInt: number): number[] => {
     let i = 0;
     while (zonesInt !== 0) {
         // eslint-disable-next-line no-bitwise
-        if ((1 & zonesInt) !== 0) zonesArr.push(i++);
+        if ((1 & zonesInt) !== 0) zonesArr.push(i);
         // eslint-disable-next-line no-bitwise
         zonesInt = zonesInt >> 1;
+        i += 1;
     }
 
     return zonesArr;
