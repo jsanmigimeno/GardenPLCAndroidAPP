@@ -1,10 +1,11 @@
 import { SelectItem } from '../shared/select/select.component';
 
 export const irrigationZoneOptions: SelectItem[] = [
-    {value: 0, label: 'Zona 1'},
-    {value: 1, label: 'Zona 2'},
-    {value: 2, label: 'Zona 3'},
-    // {value: 3, label: 'Zona 4'}
+    {value: 0, label: 'Cesped 1'},
+    {value: 1, label: 'Cesped 2'},
+    {value: 2, label: 'Cesped 3'},
+    // {value: 3, label: 'Valla Exterior'},
+    {value: 7, label: 'Llenado Piscina'}
 ];
 
 export const irrigationSourceOptions: SelectItem[] = [
